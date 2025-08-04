@@ -10,3 +10,6 @@ stripe:
   enabled: true
   timeout: 1000
   supported-currencies: USD,EUR,ETB,GBP,AB
+
+payment-gateway: paypal
+notification-service: email

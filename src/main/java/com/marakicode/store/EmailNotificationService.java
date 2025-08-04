@@ -2,7 +2,7 @@ package com.marakicode.store;
 
 import org.springframework.stereotype.Service;
 
-@Service("email")
+// @Service("email")
 public class EmailNotificationService implements NotificationService {
 
     @Override

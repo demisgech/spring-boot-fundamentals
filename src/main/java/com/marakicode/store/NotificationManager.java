@@ -3,7 +3,7 @@ package com.marakicode.store;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+// @Service
 public class NotificationManager {
     private final NotificationService notificationService;
 
