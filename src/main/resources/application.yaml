@@ -13,3 +13,7 @@ stripe:
 
 payment-gateway: paypal
 notification-service: email
+
+mail-server:
+  host: https://smtp.gmail.com
+  port: 5761
