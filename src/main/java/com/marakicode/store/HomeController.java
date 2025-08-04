@@ -18,6 +18,6 @@ public class HomeController {
 
     @RequestMapping("/about")
     public String about() {
-        return "index.html";
+        return "users.html";
     }
 }
