@@ -3,6 +3,8 @@ package com.marakicode.store;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class AppConfig {
@@ -22,7 +24,17 @@ public class AppConfig {
         return new PaypalPaymentService();
     }
 
+    // Bean Scopes
+    // Singleton -> Default (single instance of Beans)
+    // Prototype
+    // Request
+    // Session
+
     @Bean
+    // Lazy initialization
+    // @Lazy
+    // Bean scope
+    // @Scope("prototype")
     public OrderService orderService() {
         if (paymentGateway.equalsIgnoreCase("stripe"))
             return new OrderService(stripe());
