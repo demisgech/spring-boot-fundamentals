@@ -1,4 +1,4 @@
-package com.marakicode.store;
+package com.marakicode.store.ioc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

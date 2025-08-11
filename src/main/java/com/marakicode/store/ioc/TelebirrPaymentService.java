@@ -1,4 +1,4 @@
-package com.marakicode.store;
+package com.marakicode.store.ioc;
 
 public class TelebirrPaymentService implements PaymentService {
 

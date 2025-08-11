@@ -1,4 +1,4 @@
-package com.marakicode.store;
+package com.marakicode.store.ioc;
 
 import java.util.List;
 
