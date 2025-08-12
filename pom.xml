@@ -24,6 +24,13 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.38</version>
+		</dependency>
+
+
+		<dependency>
 			<artifactId>flyway-core</artifactId>
 			<groupId>org.flywaydb</groupId>
 		</dependency>
