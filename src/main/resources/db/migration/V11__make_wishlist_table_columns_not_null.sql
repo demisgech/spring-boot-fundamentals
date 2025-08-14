@@ -1,0 +1,9 @@
+ALTER TABLE
+    wishlist
+MODIFY
+    COLUMN user_id BIGINT NOT NULL;
+
+ALTER TABLE
+    wishlist
+MODIFY
+    COLUMN product_id BIGINT NOT NULL;

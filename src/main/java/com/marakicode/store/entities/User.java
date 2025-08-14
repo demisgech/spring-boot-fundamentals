@@ -82,4 +82,15 @@ public class User {
         this.profile = profile;
         profile.setUser(this);
     }
+
+    // The following code is actually unnecessary, but I leave it as exercise
+    @Builder.Default
+    @ManyToMany
+    @JoinTable(name = "wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private Set<Product> wishlist = new HashSet<>();
+
+    public void addWishList(Product product) {
+        wishlist.add(product);
+        product.getUsers().add(this);
+    }
 }

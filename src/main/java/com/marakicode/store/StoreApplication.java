@@ -20,18 +20,18 @@ public class StoreApplication {
 		// SpringApplication.run(StoreApplication.class,
 		// args);
 
-		var category = Category.builder()
-				.name("category1")
+		var user = User.builder()
+				.id(1L)
+				.email("abc@domain.com")
+				.name("abc")
 				.build();
 
 		var product = Product.builder()
 				.id(1L)
 				.name("Product1")
 				.build();
-
-		category.getProducts().add(product);
-		product.setCategory(category);
-		System.out.println(category);
+		user.addWishList(product);
+		System.out.println(user);
 		// context.close();
 	}
 
