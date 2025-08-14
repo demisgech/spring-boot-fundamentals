@@ -2,7 +2,7 @@ spring:
   application:
     name: store
   datasource:
-    url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/store_temp?createDatabaseIfNotExist=true
     username: root
     password: MyPassword
 
@@ -21,3 +21,8 @@ notification-service: email
 mail-server:
   host: https://smtp.gmail.com
   port: 5761
+
+# Model first approach with hibernate
+jpa:
+  hibernate:
+  ddl-auto: create
