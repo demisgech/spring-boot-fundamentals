@@ -5,8 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -47,7 +49,8 @@ public class User {
     @Column(nullable = false, name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+            CascadeType.REMOVE }, orphanRemoval = true)
     @Builder.Default
     List<Address> addresses = new ArrayList<>();
 
@@ -75,7 +78,7 @@ public class User {
         tags.remove(tag);
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
     public void addProfile(Profile profile) {
@@ -83,14 +86,12 @@ public class User {
         profile.setUser(this);
     }
 
-    // The following code is actually unnecessary, but I leave it as exercise
     @Builder.Default
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> wishlist = new HashSet<>();
 
-    public void addWishList(Product product) {
+    public void addWishlist(Product product) {
         wishlist.add(product);
-        product.getUsers().add(this);
     }
 }

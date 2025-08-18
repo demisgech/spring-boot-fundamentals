@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,13 +47,14 @@ public class Product {
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     @ToString.Exclude
     private Category category;
 
-    @Builder.Default
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "wishlist")
-    private Set<User> users = new HashSet<>();
+    // The following code is actually unnecessary, but I leave it as exercise
+    // @Builder.Default
+    // @ToString.Exclude
+    // @ManyToMany(mappedBy = "wishlist", fetch = FetchType.EAGER)
+    // private Set<User> users = new HashSet<>();
 }
